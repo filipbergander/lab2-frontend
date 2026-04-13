@@ -1,0 +1,76 @@
+.add-main {
+    gap: 20px;
+    flex: 1;
+    min-height: 100%;
+    max-width: 960px;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 0;
+    padding: 4em;
+    background-color: linear-gradient(to right, #d4d8dd9d, #f2eaf59c);
+    h1 {
+        margin-bottom: 1em;
+        text-align: center;
+    }
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2em;
+    width: 100%;
+    padding: 1em;
+    background-color: rgb(105, 187, 255);
+    border-radius: 12px;
+}
+
+form legend {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 0.7em;
+    text-align: center;
+}
+
+form label {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: left;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+    width: 70%;
+}
+
+form input {
+    padding: 0.5em 0.25em;
+    border-radius: 8px;
+    border-color: rgb(0, 68, 255);
+    border-width: 1px;
+    width: 100%;
+}
+
+form button {
+    padding: 1em 0.75em;
+    border-radius: 8px;
+    background-image: linear-gradient(to right, #02f1e59d, #05fcdb9c);
+    border: none;
+    margin-top: 1em;
+    cursor: pointer;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+}
+
+form button:hover {
+    background-image: linear-gradient(to right, #6bd600e3, #9ffa93);
+}
+
+form button:active {
+    background-color: white;
+}

@@ -4,12 +4,51 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lab2-Backend (Frontend)</title>
+    <title>Lägg till erfarenhet</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap">
 </head>
 
 <body>
+    <header>
+        <nav>
+            <ul>
+                <li><a class="nav-links" href="index.html">Hem</a></li>
+                <li><a class="nav-links" id="current-page" href="add.html">Lägg till i CV</a></li>
+                <li><a class="nav-links" href="about.html">Om uppgiften</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="add-main">
+        <h1>Lägg till ny arbetserfarenhet i ditt CV</h1>
+        <form action="POST">
+            <legend>Formulär för ny arbetserfarenhet</legend>
+            <div>
+                <label for="company">Arbetsgivare</label>
+                <input type="text" id="company" name="company" placeholder="Skriv arbetsgivare" required>
+            </div>
 
+            <div>
+                <label for="title">Din arbetstitel</label>
+                <input type="text" id="title" name="title" placeholder="Skriv arbetstitel" required>
+            </div>
+
+            <div>
+                <label for="location">Plats</label>
+                <input type="text" id="location" name="location" placeholder="Skriv plats" required>
+            </div>
+
+            <div>
+                <label for="description">Beskrivning</label>
+                <input type="text" id="description" name="description" placeholder="Skriv beskrivning">
+            </div>
+
+            <button type="submit">Lägg till erfarenhet<svg xmlns="http://www.w3.org/2000/svg" height="28px"
+                    viewBox="0 -960 960 960" width="28px" fill="#1f1f1f">
+                    <path
+                        d="M720-40v-120H600v-80h120v-120h80v120h120v80H800v120h-80ZM80-160v-240H40v-80l40-200h600l40 200v80h-40v120h-80v-120H440v240H80Zm80-80h200v-160H160v160Zm-38-240h516-516ZM80-720v-80h600v80H80Zm42 240h516l-24-120H146l-24 120Z" />
+                </svg></button>
+        </form>
+    </main>
     <footer>
         <p>2026 Lab2.2 - Backend</p>
     </footer>

@@ -1,2 +1,2 @@
-import '../css/style.scss';
+import '../sass/style.scss';
 "use strict";
