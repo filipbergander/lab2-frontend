@@ -20,21 +20,22 @@
     </header>
     <main class="add-main">
         <h1>Lägg till ny arbetserfarenhet i ditt CV</h1>
-        <form action="POST">
+        <form id="add-experience-form" method="POST">
             <legend>Formulär för nytt jobb</legend>
+            <div id="error-message"></div>
             <div>
                 <label for="company">Arbetsgivare</label>
-                <input type="text" id="company" name="company" placeholder="Skriv arbetsgivare" required>
+                <input type="text" id="company" name="company" placeholder="Skriv arbetsgivare">
             </div>
 
             <div>
                 <label for="title">Din arbetstitel</label>
-                <input type="text" id="title" name="title" placeholder="Skriv arbetstitel" required>
+                <input type="text" id="title" name="title" placeholder="Skriv arbetstitel">
             </div>
 
             <div>
-                <label for="location">Plats</label>
-                <input type="text" id="location" name="location" placeholder="Skriv plats" required>
+                <label for="location">Ort</label>
+                <input type="text" id="location" name="location" placeholder="Skriv ort">
             </div>
 
             <div>
@@ -52,7 +53,7 @@
     <footer>
         <p>2026 Filip B | Lab2.2 - Backend-baserad Webbutveckling</p>
     </footer>
-    <script type="module" src="/src/js/main.js"></script>
+    <script type="module" src="/src/js/add.js"></script>
 </body>
 
 </html>

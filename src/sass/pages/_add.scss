@@ -81,6 +81,15 @@ form button:active {
     background-color: white;
 }
 
+#error-message {
+    color: rgb(221, 4, 4);
+    margin: 0 auto;
+    li {
+        list-style-position: inside;
+        text-align: left;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .add-main {
         padding: 2em;

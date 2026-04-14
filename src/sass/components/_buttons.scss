@@ -1,0 +1,10 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+.delete-btn {
+    @include button($btn-color-red, $color-text);
+    margin-right: 0.5em;
+}
+
+.update-btn {
+    @include button($btn-color-secondary, $color-text);
+}
