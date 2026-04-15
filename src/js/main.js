@@ -158,7 +158,7 @@ export function renderExperience(experiences) {
         <article class="experience-item">
             <h3>${exp.companyName} - ${exp.location}</h3>
             <h4>${exp.jobTitle}</h4>
-            <p> <span class="span-description">Arbetsbeskrivning:</span> ${exp.description}</p>
+            <p> <span class="span-description"><strong>Arbetsbeskrivning:</strong></span> ${exp.description}</p>
             <div id="experience-btns">
                 <button data-id="${exp.id}" class="delete-btn">Radera</button>
                 <button data-id="${exp.id}" class="update-btn">Uppdatera</button>

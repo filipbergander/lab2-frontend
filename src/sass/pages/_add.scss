@@ -13,6 +13,7 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 0 auto;
     gap: 0.2em;
     width: 100%;
     padding: 1em;
@@ -45,7 +46,6 @@ form input {
     border-color: rgb(0, 68, 255);
     border-width: 1px;
     width: 100%;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 textarea {
@@ -95,22 +95,13 @@ textarea::placeholder {
     .add-main {
         padding: 0.5em;
     }
-    header {
-        padding: 0.2em;
-    }
-    nav {
-        li {
-            margin: 0 0.3em;
-        }
-        a {
-            font-size: 0.9em;
-            padding: 0.1em;
-        }
-    }
 }
 
 @media screen and (max-width: 320px) {
     .add-main {
         padding: 0em;
+    }
+    form {
+        width: 95%;
     }
 }

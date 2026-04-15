@@ -60,6 +60,17 @@ nav {
             margin: 0 0.3em;
         }
         a {
+            margin-top: 1em;
+            font-size: 0.9em;
+            padding: 0.5em;
+        }
+    }
+}
+
+@media screen and (max-width: 320px) {
+    nav {
+        a {
+            margin-top: 1em;
             font-size: 0.9em;
             padding: 0.3em;
         }

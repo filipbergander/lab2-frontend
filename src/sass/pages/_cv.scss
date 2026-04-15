@@ -1,8 +1,18 @@
 #experiences-container {
+    background-color: rgb(255, 255, 255);
+    padding: 1em 5em 5em;
+    border-radius: 12px;
+    margin: 0 auto;
+    width: 100%;
     h2 {
         text-align: center;
         margin-bottom: 1em;
     }
+}
+
+#experience-list {
+    max-width: 700px;
+    width: 100%;
 }
 
 .experience-item {
@@ -10,82 +20,34 @@
     flex-direction: column;
     justify-content: center;
     text-align: left;
-    margin-bottom: 2.5em;
-    .span-description {
-        text-decoration: underline;
-    }
-}
-
-#experience-btns {
-    display: flex;
-    margin-top: 0.5em;
-}
-
-.table {
     margin: 0 auto;
-    border-collapse: collapse;
-    width: 90%;
-    border: 1px solid black;
-    margin-bottom: 1em;
-    box-shadow: 0 6px 10px -3px black;
-    font-size: 1em;
-    th {
-        padding: 0.6em;
-        text-align: center;
-        background-color: rgba(255, 255, 255, 0.664);
-    }
-    th {
-        background-color: rgb(235, 161, 76);
-        color: black;
-        text-decoration: none;
-    }
-    td {
-        padding: 0.6em;
-        text-align: left;
-        background-color: rgba(255, 255, 255, 0.664);
-        border-bottom: 1px solid rgba(121, 114, 114, 0.468);
+    width: 100%;
+    margin-bottom: 2.5em;
+    background-color: rgba(224, 223, 223, 0.582);
+    box-shadow: 0 0 12px 2px black;
+    border-radius: 16px;
+    padding: 1em;
+    p {
+        margin-top: 0.5em;
+        width: 100%;
+        word-wrap: break-word;
     }
 }
 
 @media screen and (max-width: 768px) {
-    table th {
-        padding: 0.5em;
-        font-size: 0.9em;
+    .experience-item {
+        padding: 1em;
     }
-    .table tbody td {
-        padding: 0.25em;
-        font-size: 0.9em;
-        text-align: left;
-        background-color: rgba(255, 255, 255, 0.664);
-        border: 1px solid rgba(121, 114, 114, 0.468);
-    }
-    table {
-        width: 95%;
-        min-width: 0;
+    #experiences-container {
+        padding: 1em 3em 3em;
     }
 }
 
 @media screen and (max-width: 500px) {
-    table {
-        width: 100%;
-    }
-    table th {
-        padding: 0.1em;
-        text-align: left;
+    #experiences-container {
+        border-radius: 0;
+        padding: 1em;
     }
 }
 
-@media screen and (max-width: 370px) {
-    header {
-        padding: 0.2em;
-    }
-    nav {
-        li {
-            margin: 0 0.3em;
-        }
-        a {
-            font-size: 0.9em;
-            padding: 0.3em;
-        }
-    }
-}
+@media screen and (max-width: 370px) {}

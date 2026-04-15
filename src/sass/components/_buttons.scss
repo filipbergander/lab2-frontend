@@ -31,3 +31,17 @@ form button:hover {
 form button:active {
     background-color: white;
 }
+
+#experience-btns {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5em;
+    margin-top: 1.5em;
+}
+
+@media screen and (max-width: 500px) {
+    form button {
+        width: 70%;
+    }
+}
