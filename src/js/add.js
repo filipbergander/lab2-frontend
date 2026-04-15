@@ -1,6 +1,7 @@
 "use strict";
 // Hämtar in funktionen renderExperience 
 import { renderExperience } from "./main.js";
+import { createExperience } from "./main.js";
 
 const errorMsgList = document.getElementById("error-message");
 const addExpForm = document.getElementById("add-experience-form");
@@ -37,8 +38,15 @@ addExpForm.addEventListener("submit", (e) => {
 
     if (errors.length > 0) {
         displayErrorMsg(errors);
-    } else if (errors.length === 0) {
-        renderExperience();
+    }
+
+    if (errors.length === 0) {
+        createExperience();
+        companyInput.value = "";
+        titleInput.value = "";
+        locationInput.value = "";
+        descriptionInput.value = "";
+        errorMsgList.innerHTML = "";
         window.location.href = "index.html";
     }
 });
