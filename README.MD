@@ -1,5 +1,5 @@
 # Laboration 2 | Backend-baserad Webbutveckling (Frontend)
-Inom denna uppgift skapar jag en frontend-webbplats med hjälp av HTML, Sass (SCSS), samt JavaScript. Syftet med webbplatsen är att kunna se sitt CV samt lägga till fler arbetserfarenheter i CV:et. Hemsidan uppdaterar sitt innehåll genom att ansluta mot en databas genom API-anrop. Databasen som använts är MySQL. Redan sparad data hämtas in från databasen genom ett fetch-anrop (GET). Data skapas, raderas och uppdateras på nytt genom ytterligare anrop och funktioner med metoderna POST, DELETE och PUT. 
+Inom denna uppgift skapar jag en frontend-webbplats med hjälp av HTML, Sass (SCSS), samt JavaScript och VITE. Syftet med webbplatsen är att kunna se sitt CV samt lägga till fler arbetserfarenheter i CV:et. Hemsidan uppdaterar sitt innehåll genom att ansluta mot en databas genom API-anrop. Databasen som användes till en början var MySQL, detta ändrades senare till PostgreSQL för att kunna publicera sidan enklare. Redan sparad data hämtas in från databasen genom ett fetch-anrop (GET). Data skapas, raderas och uppdateras på nytt genom ytterligare anrop och funktioner med metoderna POST, DELETE och PUT. 
 
 Totalt finns det tre sidor som går att navigera mellan.
 

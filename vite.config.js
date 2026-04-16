@@ -2,12 +2,15 @@ import { defineConfig } from "vite";
 import { resolve } from "path";
 
 export default defineConfig({
+    css: {
+        devSourcemap: true
+    },
     build: {
-        rollupOoptions: {
+        rollupOptions: {
             input: {
                 main: resolve(__dirname, "index.html"),
-                pictures: resolve(__dirname, "add.html"),
-                publish: resolve(__dirname, "about.html")
+                add: resolve(__dirname, "add.html"),
+                about: resolve(__dirname, "about.html")
             }
         }
     }
