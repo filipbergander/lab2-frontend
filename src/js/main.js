@@ -7,6 +7,8 @@ const companyInput = document.getElementById("company");
 const titleInput = document.getElementById("title");
 const locationInput = document.getElementById("location");
 const descriptionInput = document.getElementById("description");
+const startDateInput = document.getElementById("start-date");
+const endDateInput = document.getElementById("end-date");
 
 // Div-element för att skriva ut CV till
 const experienceList = document.getElementById("experience-list");
@@ -26,22 +28,24 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Localhost-url
-const url = "http://127.0.0.1:5080/workexperience";
+const url = "http://localhost:3000/workexperience";
 
 /**
  * För att hämta lagrad data inom databasservern (backend)
  */
 async function fetchData() {
     try {
-        const response = await fetch(url) // Använder urlen för att anropa innehållet
+        const response = await fetch(url) // Använder urlen för att anropa innehållet'
+        console.log("RESPONSEN: ", response);
         if (!response.ok) {
             throw new Error(`Fel hos server ${response.status}`);
         }
         const experiences = await response.json(); // Sparar ned innehållet
+        console.log("ERFARENHETER: ", experiences);
         renderExperience(experiences);
     } catch (error) { // Om något blivit fel
         console.error("Det gick inte att hämta data från servern: ", error);
-        experienceList.textContent = "Kunde inte hämta data från servern"; // Felmeddelande
+        experienceList.textContent = "Kunde inte hämta data från servern. Prova igen senare eller lägg till ett nytt jobb i ditt CV."; // Felmeddelande
         experienceList.style.color = "red"; // Ger texten röd färg
         experienceList.style.fontSize = "1.3em"; // Gör texten större
     }
@@ -55,12 +59,16 @@ export async function createExperience() {
     const title = titleInput.value.trim();
     const location = locationInput.value.trim();
     const description = descriptionInput.value.trim();
+    const startDate = startDateInput.value;
+    const endDate = endDateInput.value;
 
     let experience = {
-        companyName: company,
-        jobTitle: title,
+        company_name: company,
+        job_title: title,
         location: location,
-        description: description
+        description: description,
+        start_date: startDate,
+        end_date: endDate
     };
 
     try {
@@ -73,7 +81,7 @@ export async function createExperience() {
         });
         // Om ingen respons ges
         if (!response.ok) {
-            throw new Error(`Kunde inte lägga till en ny arbetserfarenhet. Försök igen`);
+            throw Error(`Kunde inte lägga till en ny arbetserfarenhet. Försök igen`);
         }
         const data = await response.json(); // Sparar ned responsen
         return data;
@@ -89,7 +97,7 @@ export async function createExperience() {
 async function deleteExperience(id) {
     // Metod delete
     try {
-        const response = await fetch("http://127.0.0.1:5080/workexperience/" + id, {
+        const response = await fetch("http://localhost:3000/workexperience/" + id, {
             method: "DELETE"
         });
         // Om man inte fick en respons
@@ -113,16 +121,20 @@ export async function updateExperience(id) {
     const title = titleInput.value.trim();
     const location = locationInput.value.trim();
     const description = descriptionInput.value.trim();
+    const startDate = startDateInput.value;
+    const endDate = endDateInput.value;
     // Sparar värdena som ett objekt
     const updWorkExp = {
-        companyName: company,
-        jobTitle: title,
+        company_name: company,
+        job_title: title,
         location: location,
-        description: description
+        description: description,
+        start_date: startDate,
+        end_date: endDate
     };
     // Försöker med att hämta det specifika arbetet ur CV inom databasservern
     try {
-        const response = await fetch("http://127.0.0.1:5080/workexperience/" + id, {
+        const response = await fetch("http://localhost:3000/workexperience/" + id, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -152,13 +164,18 @@ export function renderExperience(experiences) {
     }
     // Tömmer listan innan en ny skapas
     experienceList.innerHTML = "";
+
     // Struktur inom DOM
     experiences.forEach(exp => {
         experienceList.innerHTML += `
         <article class="experience-item">
-            <h3>${exp.companyName} - ${exp.location}</h3>
-            <h4>${exp.jobTitle}</h4>
+            <h3>${exp.company_name} - ${exp.location}</h3>
+            <h4>${exp.job_title}</h4>
             <p> <span class="span-description"><strong>Arbetsbeskrivning:</strong></span> ${exp.description}</p>
+            <div class="experience-dates">
+                <p><span><strong>Startdatum:</strong></span> ${exp.start_date}</p>
+                <p><span><strong>Slutdatum:</strong></span> ${exp.end_date}</p>
+            </div>
             <div id="experience-btns">
                 <button data-id="${exp.id}" class="delete-btn">Radera</button>
                 <button data-id="${exp.id}" class="update-btn">Uppdatera</button>

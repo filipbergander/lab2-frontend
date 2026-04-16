@@ -1,5 +1,5 @@
 #experiences-container {
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(252, 225, 203);
     padding: 1em 5em 5em;
     border-radius: 12px;
     margin: 0 auto;
@@ -31,6 +31,14 @@
         margin-top: 0.5em;
         width: 100%;
         word-wrap: break-word;
+    }
+}
+
+.experience-dates {
+    margin-top: 1em;
+    p {
+        color: rgb(31, 30, 30);
+        font-size: 0.9em;
     }
 }
 

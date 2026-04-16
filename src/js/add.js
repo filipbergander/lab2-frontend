@@ -15,6 +15,8 @@ const companyInput = document.getElementById("company");
 const titleInput = document.getElementById("title");
 const locationInput = document.getElementById("location");
 const descriptionInput = document.getElementById("description");
+const startDateInput = document.getElementById("start-date");
+const endDateInput = document.getElementById("end-date");
 
 // När DOM har laddats in
 document.addEventListener("DOMContentLoaded", async() => {
@@ -26,18 +28,22 @@ document.addEventListener("DOMContentLoaded", async() => {
         titleInput.value = "";
         locationInput.value = "";
         descriptionInput.value = "";
+        startDateInput.value = "";
+        endDateInput.value = "";
     }
 
     // Om det finns något lagrat i localstorage
     if (localStorage.length > 0) {
-        const response = await fetch(`http://127.0.0.1:5080/workexperience/${updateWorkID}`); // Använder key inom anropet
+        const response = await fetch(`http://localhost:3000/workexperience/${updateWorkID}`); // Använder key inom anropet
         const data = await response.json(); // Array av objekt som hämtas via anropet
 
         // Sätter värden för inputs utefter värdena inom databasen för det specifika id
-        companyInput.value = data[0].companyName;
-        titleInput.value = data[0].jobTitle;
-        locationInput.value = data[0].location;
-        descriptionInput.value = data[0].description;
+        companyInput.value = data.company_name;
+        titleInput.value = data.job_title;
+        locationInput.value = data.location;
+        descriptionInput.value = data.description;
+        startDateInput.value = data.start_date.slice(0, 10); // Gör datumet till yyyy-mm-dd format
+        endDateInput.value = data.end_date.slice(0, 10); // Gör datumet till yyyy-mm-dd format
 
         addWorkBtn.childNodes[0].textContent = "Uppdatera erfarenhet"; // Ändrar bara knappens innehåll
         svgIcon.textContent = "work_update"; // Ändrar till en annan ikon
@@ -53,6 +59,8 @@ addExpForm.addEventListener("submit", async(e) => {
     const title = titleInput.value.trim();
     const location = locationInput.value.trim();
     const description = descriptionInput.value.trim();
+    const startDate = startDateInput.value;
+    const endDate = endDateInput.value;
 
     // Felhantering som ger olika felmeddelanden beroende på vad användaren inte skrivit i inputs
     if (company === "") {
@@ -69,6 +77,17 @@ addExpForm.addEventListener("submit", async(e) => {
     // Inte angett en beskrivning av jobbet
     if (description.length === 0) {
         errors.push("Skriv en beskrivning av arbetet!")
+    }
+
+    if (startDate === "") {
+        errors.push("Välj ett startdatum för arbetet!")
+    }
+    if (endDate === "") {
+        errors.push("Välj ett slutdatum för arbetet!")
+    }
+
+    if (startDate > endDate) {
+        errors.push("Startdatumet kan inte vara efter slutdatumet!")
     }
 
     // Om det finns felmeddelanden så visas felmeddelanden ända tills inga errors finns
@@ -91,6 +110,8 @@ addExpForm.addEventListener("submit", async(e) => {
         titleInput.value = "";
         locationInput.value = "";
         descriptionInput.value = "";
+        startDateInput.value = "";
+        endDateInput.value = "";
         errorMsgList.innerHTML = "";
     }
     // Redirect om allt gått bra, antingen för update eller när man lägger till ett nytt jobb
