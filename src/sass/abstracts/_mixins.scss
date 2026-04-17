@@ -16,3 +16,23 @@
         background-color: white;
     }
 }
+
+@mixin popup($popup-color) {
+    background-color: $popup-color;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    position: fixed;
+    padding: 1em;
+    text-align: center;
+    width: 15%;
+    bottom: 10vh;
+    right: 0vh;
+    border-radius: 16px;
+    opacity: 0;
+    transition: opacity 1.5s ease;
+    pointer-events: none;
+    visibility: hidden;
+}

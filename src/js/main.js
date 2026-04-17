@@ -27,18 +27,35 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+// Eventlyssnare för att radera en specifik CV-post
+document.addEventListener("click", async(event) => {
+    const target = event.target;
+    if (target.classList.contains("delete-btn")) {
+        const btnID = target.dataset.id; // Hämtar in det specifika ID som knappen fått när den skapades
+        await deleteExperience(btnID); // Ger btn-id som argument mot funktionen
+        target.closest("article").remove(); // Tar bort artikeln som knappen ligger inuti
+        await fetchData();
+        const popUpDeleteBtn = document.getElementById("pop-up-delete");
+        if (!popUpDeleteBtn) {
+            return;
+        }
+        popUpDeleteBtn.classList.add("visible"); // Visar pop-upen
+        setTimeout(() => {
+            popUpDeleteBtn.classList.remove("visible"); // Tar bort pop-upen efter 3 sekunder
+        }, 4000);
+    }
+});
+
 /**
  * För att hämta lagrad data inom databasservern (backend)
  */
 async function fetchData() {
     try {
         const response = await fetch("https://lab2-backend-xzxp.onrender.com/workexperience") // Använder urlen för att anropa innehållet'
-        console.log("RESPONSEN: ", response);
         if (!response.ok) {
             throw new Error(`Fel hos server ${response.status}`);
         }
         const experiences = await response.json(); // Sparar ned innehållet
-        console.log("ERFARENHETER: ", experiences);
         renderExperience(experiences);
     } catch (error) { // Om något blivit fel
         console.error("Det gick inte att hämta data från servern: ", error);
@@ -187,20 +204,9 @@ export function renderExperience(experiences) {
     updateBtns.forEach((btn) => {
         btn.addEventListener("click", async() => {
             const updBtnId = btn.dataset.id; // Ger variabeln det specifika id som varje "jobb-inlägg" har
-
             // Sparar ned det specifika ID inom localstorage, som finns inom update-knappen genom dataset id
             localStorage.setItem("updateWorkID", updBtnId);
             window.location.href = "add.html"; // Navigerar till formulär-sidan
         });
     });
 }
-
-// Eventlyssnare för att radera en specifik CV-post
-document.addEventListener("click", async(event) => {
-    if (event.target.classList.contains("delete-btn")) {
-        const btnID = event.target.dataset.id; // Hämtar in det specifika ID som knappen fått när den skapades
-        await deleteExperience(btnID); // Ger btn-id som argument mot funktionen
-        event.target.closest("article").remove(); // Tar bort artikeln som knappen ligger inuti
-        fetchData();
-    }
-});
