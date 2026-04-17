@@ -201,5 +201,6 @@ document.addEventListener("click", async(event) => {
         const btnID = event.target.dataset.id; // Hämtar in det specifika ID som knappen fått när den skapades
         await deleteExperience(btnID); // Ger btn-id som argument mot funktionen
         event.target.closest("article").remove(); // Tar bort artikeln som knappen ligger inuti
+        fetchData();
     }
 });
