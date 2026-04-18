@@ -50,18 +50,20 @@ document.addEventListener("click", async(event) => {
  * För att hämta lagrad data inom databasservern (backend)
  */
 async function fetchData() {
+    experienceList.textContent = "Hämtar data från servern. Vänta lite för att servern ska vakna till liv."; // Felmeddelande
     try {
         const response = await fetch("https://lab2-backend-xzxp.onrender.com/workexperience") // Använder urlen för att anropa innehållet'
         if (!response.ok) {
             throw new Error(`Fel hos server ${response.status}`);
         }
         const experiences = await response.json(); // Sparar ned innehållet
+        experienceList.textContent = ""; // Tömmer listan innan data från servern läggs till i DOM
+
         renderExperience(experiences);
     } catch (error) { // Om något blivit fel
         console.error("Det gick inte att hämta data från servern: ", error);
         experienceList.textContent = "Kunde inte hämta data från servern. Prova igen senare eller lägg till ett nytt jobb i ditt CV."; // Felmeddelande
         experienceList.style.color = "red"; // Ger texten röd färg
-        experienceList.style.fontSize = "1.3em"; // Gör texten större
     }
 }
 /**
