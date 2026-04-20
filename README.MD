@@ -16,5 +16,8 @@ När en uppdatera-knapp klickas, navigeras användaren till sidan med formuläre
 
 Likadan logik är inom knappen för radera, där ID för knappen används som argument för funktionen till att radera ett jobb-inlägg. Ingen navigering sker vid klick på denna knapp utan innehållet uppdateras automatiskt.
 
+### Tanke i efterhand
+För att lägga till ett nytt jobb till sitt CV krävs det slutdatum. I en verklig situation kanske man inte ska behöva skriva ett slutdatum, eftersom man som användare möjligtvis vill söka ett nytt jobb med sitt CV fastän man fortfarande har en pågående tjänst. 
+
 ## Notering
 Eftersom jag använder tjänsten Render för att publicera min backend-sida kan det ta lite tid till en början för att ladda in webbplatsens innehåll. Detta eftersom den går in i viloläge automatiskt när inte tjänsten används. Första sidladdningen kan därmed upplevas långsam.
